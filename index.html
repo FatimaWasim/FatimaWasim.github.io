@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatima Wasim — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0a0a0f;--surface:#111118;--surface2:#1a1a24;--surface3:#22222f;
+  --accent:#c8a96e;--accent2:#7b68ee;--accent3:#4ecdc4;
+  --text:#f0ede8;--text2:#b8b2aa;--text3:#6a6470;
+  --border:rgba(255,255,255,0.07);--border2:rgba(200,169,110,0.25);--gold-glow:rgba(200,169,110,0.12);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,10,15,0.88);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--accent);letter-spacing:0.02em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:0.5rem 1.2rem;border-radius:4px;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.nav-cta:hover{background:var(--accent);color:var(--bg);}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 3rem 3rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(123,104,238,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:900px;position:relative;z-index:1;width:100%;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold-glow);border:1px solid var(--border2);color:var(--accent);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:2px;margin-bottom:1.75rem;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.25rem;color:var(--text);}
+.hero h1 .italic-gold{font-style:italic;color:var(--accent);}
+.hero-sub{font-size:1.05rem;color:var(--text2);max-width:600px;line-height:1.85;margin-bottom:2rem;}
+.hero-sub strong{color:var(--text);font-weight:500;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-primary{background:var(--accent);color:var(--bg);border:none;padding:0.85rem 1.8rem;border-radius:4px;font-size:0.88rem;font-weight:600;letter-spacing:0.03em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s;}
+.btn-primary:hover{background:#d4b87a;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:0.85rem 1.8rem;border-radius:4px;font-size:0.88rem;font-weight:400;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+.hero-stats{display:flex;gap:3rem;padding-top:2.5rem;border-top:0.5px solid var(--border);flex-wrap:wrap;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem;}
+
+section{padding:5rem 3rem;max-width:1100px;margin:0 auto;}
+.section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem;display:flex;align-items:center;gap:0.75rem;}
+.section-label::after{content:'';flex:1;max-width:40px;height:1px;background:var(--accent);opacity:0.4;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:0.85rem;letter-spacing:-0.01em;color:var(--text);}
+.section-intro{color:var(--text2);font-size:0.97rem;max-width:600px;margin-bottom:3rem;line-height:1.85;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-text p{color:var(--text2);font-size:0.97rem;line-height:1.9;margin-bottom:1.1rem;}
+.about-text p strong{color:var(--text);font-weight:500;}
+.journey-list{list-style:none;display:flex;flex-direction:column;gap:1.4rem;}
+.journey-item{display:flex;gap:1rem;align-items:flex-start;}
+.journey-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;margin-top:0.62rem;flex-shrink:0;}
+.journey-text{font-size:0.86rem;color:var(--text2);line-height:1.7;}
+.journey-text strong{color:var(--text);font-weight:500;display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.15rem;}
+
+.skills-section{background:var(--surface);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:5rem 0;}
+.skills-inner{max-width:1100px;margin:0 auto;padding:0 3rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem;}
+.skill-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s;}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.skill-title{font-size:0.78rem;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.38rem;}
+.tag{background:var(--surface3);color:var(--text2);font-size:0.72rem;font-family:'DM Mono',monospace;padding:0.22rem 0.55rem;border-radius:3px;border:0.5px solid var(--border);}
+
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.25rem 0;border-bottom:0.5px solid var(--border);}
+.exp-item:last-child{border-bottom:none;}
+.exp-date{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);margin-bottom:0.28rem;}
+.exp-org{font-size:0.77rem;color:var(--text3);line-height:1.5;}
+.exp-role{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.8rem;color:var(--text);}
+.exp-highlights{list-style:none;display:flex;flex-direction:column;gap:0.42rem;}
+.exp-highlights li{font-size:0.86rem;color:var(--text2);padding-left:1.2rem;position:relative;line-height:1.65;}
+.exp-highlights li::before{content:'→';position:absolute;left:0;color:var(--accent3);font-size:0.72rem;top:0.12em;}
+.impact-badge{display:inline-flex;align-items:center;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.25);color:var(--accent);font-size:0.72rem;font-weight:600;padding:0.22rem 0.7rem;border-radius:3px;margin-top:0.8rem;font-family:'DM Mono',monospace;}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.project-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:1.6rem;transition:all 0.2s;display:flex;flex-direction:column;}
+.project-card:hover{border-color:var(--border2);background:var(--surface2);transform:translateY(-3px);}
+.project-card.featured{border-color:rgba(123,104,238,0.28);}
+.project-tag{font-size:0.67rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.8rem;}
+.project-title{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;margin-bottom:0.65rem;line-height:1.3;color:var(--text);}
+.project-desc{color:var(--text2);font-size:0.85rem;line-height:1.78;flex:1;margin-bottom:1.1rem;}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.32rem;}
+.stack-tag{background:var(--surface3);color:var(--accent3);font-size:0.67rem;font-family:'DM Mono',monospace;padding:0.18rem 0.5rem;border-radius:3px;border:0.5px solid rgba(78,205,196,0.18);}
+.devpost-link{display:inline-flex;align-items:center;gap:0.35rem;color:var(--accent2);font-size:0.75rem;text-decoration:none;margin-top:0.75rem;font-weight:500;transition:opacity 0.2s;}
+.devpost-link:hover{opacity:0.75;}
+
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem;}
+.edu-card{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;padding:1.6rem;transition:border-color 0.2s;}
+.edu-card:hover{border-color:var(--border2);}
+.edu-degree{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;margin-bottom:0.22rem;line-height:1.3;color:var(--text);}
+.edu-school{color:var(--accent);font-size:0.81rem;font-weight:500;margin-bottom:0.65rem;}
+.edu-detail{color:var(--text2);font-size:0.81rem;line-height:1.7;}
+.gpa-badge{display:inline-block;background:rgba(78,205,196,0.08);border:1px solid rgba(78,205,196,0.22);color:var(--accent3);font-family:'DM Mono',monospace;font-size:0.73rem;padding:0.2rem 0.55rem;border-radius:3px;margin-top:0.7rem;margin-right:0.35rem;}
+.award-list{list-style:none;margin-top:0.8rem;display:flex;flex-direction:column;gap:0.32rem;}
+.award-list li{font-size:0.78rem;color:var(--text2);padding-left:1rem;position:relative;}
+.award-list li::before{content:'✦';position:absolute;left:0;color:var(--accent);font-size:0.52rem;top:0.32em;}
+
+.coursework-wrap{background:var(--surface);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;}
+.coursework-header{padding:0.9rem 1.5rem;font-size:0.73rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--border);background:var(--surface2);}
+.course-columns{display:grid;grid-template-columns:1fr 1fr;}
+.course-col{padding:1.25rem 1.5rem;}
+.course-col:first-child{border-right:0.5px solid var(--border);}
+.course-col-title{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:0.85rem;}
+.course-item{font-size:0.82rem;color:var(--text2);padding:0.4rem 0;border-bottom:0.5px solid rgba(255,255,255,0.04);line-height:1.4;}
+.course-item:last-child{border-bottom:none;}
+.course-item.upcoming{color:var(--text3);font-style:italic;}
+
+.contact-section{background:var(--surface);border-top:0.5px solid var(--border);padding:5rem 0;}
+.contact-inner{max-width:640px;margin:0 auto;padding:0 3rem;text-align:center;}
+.contact-inner .section-label{justify-content:center;}
+.contact-inner .section-label::after{display:none;}
+.contact-inner .section-title{text-align:center;}
+.contact-inner p{color:var(--text2);margin-bottom:2.25rem;font-size:0.97rem;line-height:1.85;}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem;}
+.contact-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface2);border:0.5px solid var(--border);color:var(--text2);text-decoration:none;padding:0.7rem 1.4rem;border-radius:4px;font-size:0.82rem;font-weight:500;transition:all 0.2s;}
+.contact-link:hover{border-color:var(--border2);color:var(--accent);}
+.contact-note{font-size:0.74rem;color:var(--text3);letter-spacing:0.03em;}
+
+footer{text-align:center;padding:1.75rem;color:var(--text3);font-size:0.73rem;border-top:0.5px solid var(--border);letter-spacing:0.04em;}
+
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:2px;}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  .hero{padding:5.5rem 1.5rem 2.5rem;}
+  section{padding:3.5rem 1.5rem;}
+  .exp-item{grid-template-columns:1fr;gap:0.35rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .hero-stats{gap:1.5rem;}
+  .skills-inner,.contact-inner{padding:0 1.5rem;}
+  .course-columns{grid-template-columns:1fr;}
+  .course-col:first-child{border-right:none;border-bottom:0.5px solid var(--border);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Fatima Wasim</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Based in Sharjah, UAE · Open to opportunities</div>
+    <h1>Data Scientist,<br><span class="italic-gold">storyteller</span> in<br>numbers.</h1>
+    <p class="hero-sub">
+      I grew up in <strong>Sharjah</strong>, did all my schooling across the UAE, and moved to the US for a graduate education in data science. I care about work that is precise, useful, and honest — models that actually get deployed, dashboards that actually get used, and insights that people can act on.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+      <a href="https://github.com/FatimaWasim" target="_blank" class="btn-secondary">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/fatimawasim" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">$28M</div>
+        <div class="stat-label">ML project impact</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200K+</div>
+        <div class="stat-label">Reviews analyzed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3.91</div>
+        <div class="stat-label">Undergrad GPA</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Top 5%</div>
+        <div class="stat-label">Of graduating class</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="section-title">Sharjah raised.<br>US trained. Global ready.</div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>I am a <strong>Data Science graduate student at the University of Maryland</strong> (M.S., expected December 2026), returning to the UAE with a valid resident visa and a technical foundation built through real industry work.</p>
+      <p>My work sits at the intersection of machine learning, business intelligence, and AI. I build things that get used: dashboards that replace manual reporting, pipelines that process millions of records, and LLM-powered tools that turn unstructured data into clear decisions.</p>
+      <p>I graduated <strong>summa cum laude</strong> with a 3.91 GPA, placing in the top 5% of my class. I earned the <strong>Clarence P. Gould Honor Society Award</strong>, made the President's List six times, and the Dean's List seven times. In school I served as Head of Media on Student Council and was a <strong>BEAM High Achiever</strong> in Grades 11 and 12. The standard I held myself to then is the same one I bring to work today.</p>
+    </div>
+    <div class="about-side">
+      <ul class="journey-list">
+        <li class="journey-item"><div class="journey-dot"></div><div class="journey-text"><strong>Roots</strong>Raised and schooled in Sharjah — International School of Creative Science, Muweileh</div></li>
+        <li class="journey-item"><div class="journey-dot"></div><div class="journey-text"><strong>Undergrad</strong>B.S. Computer Science, summa cum laude — Youngstown State University, Ohio</div></li>
+        <li class="journey-item"><div class="journey-dot"></div><div class="journey-text"><strong>Industry</strong>Data Engineering Intern at First National Bank — ML models, BI dashboards, Agile delivery</div></li>
+        <li class="journey-item"><div class="journey-dot"></div><div class="journey-text"><strong>Research</strong>LLM research at The Data Mine — 200K+ review pipeline, executive presentations</div></li>
+        <li class="journey-item"><div class="journey-dot"></div><div class="journey-text"><strong>Now</strong>M.S. Data Science at UMD · Valid UAE resident visa · Seeking UAE roles</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="skills-section">
+  <div class="skills-inner">
+    <div class="section-label">What I Bring</div>
+    <div class="section-title">Technical Skills</div>
+    <p class="section-intro">A full-stack data science toolkit — from raw SQL pipelines to LLM-powered products to executive-ready dashboards.</p>
+    <div class="skills-grid fade-in">
+      <div class="skill-card"><div class="skill-title">AI and LLM</div><div class="skill-tags"><span class="tag">Prompt Engineering</span><span class="tag">Hugging Face</span><span class="tag">LLM Integration</span><span class="tag">Fine-tuning</span><span class="tag">Claude API</span><span class="tag">Gemini API</span><span class="tag">Sentiment Analysis</span></div></div>
+      <div class="skill-card"><div class="skill-title">BI and Visualization</div><div class="skill-tags"><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Executive Dashboards</span><span class="tag">KPI Design</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span></div></div>
+      <div class="skill-card"><div class="skill-title">Programming</div><div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span></div></div>
+      <div class="skill-card"><div class="skill-title">Data Engineering</div><div class="skill-tags"><span class="tag">ETL Design</span><span class="tag">Apache Spark</span><span class="tag">Hadoop</span><span class="tag">MongoDB</span><span class="tag">Cassandra</span><span class="tag">Milvus</span><span class="tag">Azure DevOps</span></div></div>
+      <div class="skill-card"><div class="skill-title">Machine Learning</div><div class="skill-tags"><span class="tag">Classification</span><span class="tag">Forecasting</span><span class="tag">Random Forest</span><span class="tag">Prophet</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span></div></div>
+      <div class="skill-card"><div class="skill-title">Methods and Tools</div><div class="skill-tags"><span class="tag">Agile / Scrum</span><span class="tag">Jira</span><span class="tag">Confluence</span><span class="tag">Jupyter</span><span class="tag">Google Colab</span><span class="tag">Distributed Computing</span></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <div class="section-title">Experience</div>
+  <p class="section-intro">Real problems. Real impact. Real numbers.</p>
+  <div class="exp-list fade-in">
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">May – Aug 2024</div><div class="exp-org">First National Bank<br>Pennsylvania, USA</div></div>
+      <div class="exp-content">
+        <div class="exp-role">Data Engineering Intern</div>
+        <ul class="exp-highlights">
+          <li>Built and refined ML models to classify millions of banking transactions across production datasets</li>
+          <li>Designed Power BI dashboards and SQL-based KPI reports used by executive leadership, removing manual reporting cycles entirely</li>
+          <li>Streamlined ETL pipelines and independently managed an internal Business Analyst platform used in live client deployments</li>
+          <li>Led Agile sprint ceremonies as Scrum Master, coordinating cross-functional teams for consistent on-time delivery</li>
+        </ul>
+        <div class="impact-badge">~$28M recognized business impact</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">Sept 2024 – May 2025</div><div class="exp-org">The Data Mine · YSU<br>Ohio, USA</div></div>
+      <div class="exp-content">
+        <div class="exp-role">LLM and AI Research Associate</div>
+        <ul class="exp-highlights">
+          <li>Built an LLM-powered tool that processed 200K+ customer reviews and generated location-specific business improvement recommendations, cutting manual operations analysis significantly</li>
+          <li>Designed prompt engineering workflows and fine-tuned Hugging Face sentiment models to extract structured insights across multiple review platforms</li>
+          <li>Built an interactive competitor benchmarking dashboard consolidating multi-location performance data</li>
+          <li>Presented findings directly to executive stakeholders at company headquarters</li>
+        </ul>
+        <div class="impact-badge">200K+ reviews processed · Presented to C-suite</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">Jan 2023 – May 2025</div><div class="exp-org">Youngstown State University<br>Ohio, USA</div></div>
+      <div class="exp-content">
+        <div class="exp-role">Undergraduate Research Assistant</div>
+        <ul class="exp-highlights">
+          <li>Contributed to published research on human behavior in autonomous vehicle traffic environments</li>
+          <li>Developed expertise in smart traffic systems, autonomous vehicles, and academic research methodology</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">Apr 2022 – Apr 2023</div><div class="exp-org">Youngstown State University<br>Ohio, USA</div></div>
+      <div class="exp-content">
+        <div class="exp-role">Student Assistant — STEM Curriculum</div>
+        <ul class="exp-highlights">
+          <li>Co-developed a specialized computing curriculum for students with Autism Spectrum Disorder, working directly with the STEM Department Director</li>
+          <li>Managed faculty course and syllabi compliance tracking for accreditation reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:0;">
+  <div class="section-label">Selected Work</div>
+  <div class="section-title">Projects</div>
+  <p class="section-intro">Each one built to solve something real.</p>
+  <div class="projects-grid fade-in">
+    <div class="project-card featured">
+      <div class="project-tag">Hackathon · Anthropic x UMD · April 2026</div>
+      <div class="project-title">EcoJustice MD</div>
+      <p class="project-desc">A civic AI tool that lets Maryland residents report environmental violations in plain language. Claude handles issue classification, permit likelihood estimation, and triage routing. A community corroboration layer synthesizes anonymized witness testimonies into structured collective complaints citing the Maryland Environmental Justice Act 2021, sent to the correct regulatory agency.</p>
+      <div class="project-stack"><span class="stack-tag">Node.js</span><span class="stack-tag">Express</span><span class="stack-tag">Supabase</span><span class="stack-tag">Claude API</span><span class="stack-tag">Gemini API</span><span class="stack-tag">EPA ECHO API</span><span class="stack-tag">Vanilla JS</span></div>
+      <a href="https://devpost.com/software/eco-justice" target="_blank" class="devpost-link">View on Devpost ↗</a>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Senior Capstone · YSU · 2025</div>
+      <div class="project-title">Absenteeism Forecasting in US Public Schools</div>
+      <p class="project-desc">Forecasting models for post-COVID chronic absenteeism using Prophet and Random Forest, enriched with external indicators including mask mandates and political affiliation data. Deployed on the Ohio Supercomputer Center. Trends visualized in Tableau for stakeholder presentations.</p>
+      <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">R</span><span class="stack-tag">Prophet</span><span class="stack-tag">Random Forest</span><span class="stack-tag">Tableau</span><span class="stack-tag">HPC</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">Data Science · UMD · 2025</div>
+      <div class="project-title">Homeownership and Income Trends in the US</div>
+      <p class="project-desc">Analyzed 1M+ state-year data points to explore the relationship between income and homeownership. Covered the full data science lifecycle: collection, preprocessing, feature engineering, EDA, and reporting. Surfaced policy-relevant findings through detailed visualizations.</p>
+      <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">pandas</span><span class="stack-tag">NumPy</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">Seaborn</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">LLM Research · The Data Mine · 2024–25</div>
+      <div class="project-title">LLM Business Actions Tool</div>
+      <p class="project-desc">An LLM-powered system that ingested 200K+ customer reviews across platforms, applied fine-tuned sentiment models, and generated location-specific, prioritized improvement recommendations. Competitor benchmarking dashboard presented directly to C-suite.</p>
+      <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Hugging Face</span><span class="stack-tag">LLM</span><span class="stack-tag">Prompt Engineering</span><span class="stack-tag">Dashboard</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label">Academic Foundation</div>
+  <div class="section-title">Education</div>
+  <p class="section-intro">A consistent record of academic excellence across three institutions and two countries.</p>
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-degree">M.S. Data Science</div>
+      <div class="edu-school">University of Maryland, College Park</div>
+      <div class="edu-detail">College of Computer, Mathematical and Natural Sciences<br>Sept 2025 – Dec 2026 (Expected)</div>
+      <ul class="award-list">
+        <li>Anthropic x UMD Hackathon, April 2026</li>
+        <li>Focus: ML systems, LLM integration, statistical modeling</li>
+      </ul>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.S. Computer Science</div>
+      <div class="edu-school">Youngstown State University, Ohio</div>
+      <div class="edu-detail">Minor: Mathematics and Data Analytics (Honors)<br>Aug 2021 – May 2025</div>
+      <div class="gpa-badge">GPA 3.91 / 4.0</div>
+      <div class="gpa-badge">Summa Cum Laude</div>
+      <ul class="award-list">
+        <li>Clarence P. Gould Honor Society Award — Top 5%</li>
+        <li>President's List x6 · Dean's List x7</li>
+        <li>Vice President, Data Science Club</li>
+        <li>Association for Women in Mathematics</li>
+        <li>Data Science Salon Conference, Oracle HQ, Austin TX (2024)</li>
+      </ul>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">High School Diploma</div>
+      <div class="edu-school">International School of Creative Science, Muweileh · Sharjah, UAE</div>
+      <div class="edu-detail">Grades 10–12</div>
+      <ul class="award-list">
+        <li>BEAM High Achiever Award — Grades 11 and 12</li>
+        <li>Head of Media, Student Council</li>
+        <li>Community volunteer — Jalila Children's Hospital fundraising</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="coursework-wrap fade-in">
+    <div class="coursework-header">Graduate Coursework · University of Maryland</div>
+    <div class="course-columns">
+      <div class="course-col">
+        <div class="course-col-title">Completed</div>
+        <div class="course-item">Principles of Data Science</div>
+        <div class="course-item">Big Data Systems</div>
+        <div class="course-item">Data Structures and Algorithms in Data Science</div>
+        <div class="course-item">Principles of Machine Learning</div>
+        <div class="course-item">Data Modeling</div>
+        <div class="course-item">Probability and Statistics</div>
+      </div>
+      <div class="course-col">
+        <div class="course-col-title">In Progress (Final Semester)</div>
+        <div class="course-item upcoming">Generative AI</div>
+        <div class="course-item upcoming">Deep Learning</div>
+        <div class="course-item upcoming">Cloud Computing</div>
+        <div class="course-item upcoming">Communication in Data Science</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Get In Touch</div>
+    <div class="section-title">Let's work together.</div>
+    <p>I am actively seeking roles in data science, machine learning, business intelligence, and AI in the UAE. I hold a valid UAE resident visa and am available to start. If something here looks like a fit, I would love to hear from you.</p>
+    <div class="contact-links">
+      <a href="mailto:fwasim7866@gmail.com" class="contact-link">fwasim7866@gmail.com</a>
+      <a href="https://www.linkedin.com/in/fatimawasim" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/FatimaWasim" target="_blank" class="contact-link">GitHub</a>
+    </div>
+    <div class="contact-note">Based in Sharjah, UAE · Valid UAE Resident Visa</div>
+  </div>
+</div>
+
+<footer>Fatima Wasim · Data Scientist · 2026</footer>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
